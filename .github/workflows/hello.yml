@@ -18,8 +18,13 @@ jobs:
       - name: Show My ENV
         run: echo "My ENV is $MY_VAR"
 
-      - name: My secret
-        run: echo "MY code secret is ${{ secrets.MY_SECRET }}"
+      - name: Show secret directly
+        run: echo "My secret is ${{ secrets.MY_SECRET }}"
+
+      - name: Show secret as env var
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: echo "My secret is $MY_SECRET"
 
       - name: SHA CODE
         run: echo "SHA code after committing is ${{ github.sha }}"
